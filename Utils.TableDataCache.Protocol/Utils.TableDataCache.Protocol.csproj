@@ -4,10 +4,10 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<AssemblyName>Skyline.DataMiner.Utils.TableDataCache.Protocol</AssemblyName>
-		<PackageVersion>1.0.1</PackageVersion>
+		<PackageVersion>0.0.1</PackageVersion>
 		<Version>1.0.1</Version>
 		<PackageTags>Skyline;DataMiner</PackageTags>
-		<PackageProjectUrl>https://skyline.be</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableDataCache</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
