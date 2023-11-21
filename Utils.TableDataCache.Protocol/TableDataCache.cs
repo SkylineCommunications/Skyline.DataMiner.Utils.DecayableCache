@@ -9,16 +9,16 @@ namespace Utils.TableDataCache.Protocol
 	/// Requires a DataMiner and element ID to reference tables.
 	/// Can be configured to clear inactive entries.
 	/// </summary>
-	public class TableDataCache
+	public class TableDataCache : IDisposable
 	{
 		private readonly ConcurrentDictionary<long, ElementTableCache> _tablesPerElement = new ConcurrentDictionary<long, ElementTableCache>();
 
 		private readonly TimeSpan _staleDataLifeTime;
 
-		private Timer _staleDataTimer;
+		private readonly Timer _staleDataTimer;
 
 		/// <summary>
-		/// 
+		/// Initializes the table cache where stale data isn't automatically deleted.
 		/// </summary>
 		public TableDataCache()
 		{
@@ -26,22 +26,25 @@ namespace Utils.TableDataCache.Protocol
 		}
 
 		/// <summary>
-		/// 
+		/// Initializes the table cache where stale data is deleted automatically if it has not been fetched for more than <paramref name="staleDataLifeTime"/> time.
+		/// The minimum life time is 250 milliseconds.
+		/// The actual timespan should take into consideration how often this data is accessed to allow for a swift deletion when an element has become inactive.
+		/// For example, take 3 times the poll cycle time, assuming an element in timeout will still access the data.
+		/// The age of the objects is checked every <paramref name="staleDataLifeTime"/> divided by two.
 		/// </summary>
 		/// <param name="staleDataLifeTime"></param>
 		/// <exception cref="ArgumentOutOfRangeException"></exception>
 		public TableDataCache(TimeSpan staleDataLifeTime)
 		{
-			if (staleDataLifeTime < TimeSpan.FromMilliseconds(500d))
+			if (staleDataLifeTime < TimeSpan.FromMilliseconds(250d))
 			{
 				throw new ArgumentOutOfRangeException(nameof(staleDataLifeTime),
-					"The lifetime timespan should not be less than 500 ms to make use of this cache in a reasonable fashion. For an unlimited duration, use the empty constructor.");
+					"The lifetime timespan should not be less than 250 ms to make use of this cache in a reasonable fashion. For an unlimited duration, use the empty constructor.");
 			}
 
 			_staleDataLifeTime = staleDataLifeTime;
 			var timerInterval = Convert.ToInt32(staleDataLifeTime.TotalMilliseconds) / 2;
 			_staleDataTimer = new Timer(StaleDataTimerCallback, null, timerInterval, timerInterval);
-			_staleDataTimer.
 		}
 
 		private void StaleDataTimerCallback(object state)
@@ -91,6 +94,12 @@ namespace Utils.TableDataCache.Protocol
 			}
 
 			return existingValue;
+		}
+
+		/// <inheritdoc/>
+		public void Dispose()
+		{
+			_staleDataTimer?.Dispose();
 		}
 	}
 }
