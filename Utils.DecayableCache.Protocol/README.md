@@ -34,8 +34,24 @@ Define a static object of the **GlobalparameterCache** class using your desired 
 
 Defined as a *static*, it is immediately accessible to all referencing QActions, but is also shared amongst all elements hosted in the same SLScripting. Hence, elements not accessing their values will eventually be removed.
 
+```CS
+static GlobalParameterCache<Dictionary<PhysicalAddress, string>> sharedMacToPKCache = new GlobalParameterCache<Dictionary<PhysicalAddress, string>>(TimeSpan.FromMinutes(30));
+``` 
+
 The object retrieved from the cache will be a wrapper that contains an IsInitialized flag to be controlled by the user, but false by default, and a lock object to aid with safe access.
 
 ```CS
-static GlobalParameterCache<Dictionary<PhysicalAddress, string>> sharedMacToPKCache = new GlobalParameterCache<Dictionary<PhysicalAddress, string>>(TimeSpan.FromMinutes(30));
+var parameter = sharedMacToPKCache.GetParameter(16, 32, 1000);
+lock (parameter.Lock)
+{
+	if (!parameter.IsInitialized)
+	{
+		parameter.Value = new Dictionary<PhysicalAddress, string>();
+
+		// Load existing values
+	}
+
+	// Read cached values
+	// and/or write altered values to cache and element
+}
 ``` 

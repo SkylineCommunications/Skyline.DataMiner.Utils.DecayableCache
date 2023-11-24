@@ -3,11 +3,11 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<AssemblyName>Skyline.DataMiner.Utils.TableDataCache.Protocol</AssemblyName>
+		<AssemblyName>Skyline.DataMiner.Utils.DecayableCache.Protocol</AssemblyName>
 		<PackageVersion>0.0.1</PackageVersion>
 		<Version>1.0.1</Version>
 		<PackageTags>Skyline;DataMiner</PackageTags>
-		<PackageProjectUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableDataCache</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.DecayableCache</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -16,7 +16,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>SkylineCommunications</Authors>
 		<Company>Skyline Communications</Company>
-		<Description>A NuGet library for efficient, thread-safe caching of table data in memory, designed to enhance performance in DataMiner connectors.</Description>
+		<Description>A NuGet library for efficient, thread-safe, and temporary caching of parameter data in memory, designed to enhance performance in DataMiner connectors.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>

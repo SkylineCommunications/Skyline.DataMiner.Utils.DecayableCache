@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Utils.TableDataCache.Protocol.Unit.Tests")]
+[assembly: AssemblyTitle("Utils.DecayableCache.Protocol.Unit.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Utils.TableDataCache.Protocol.Unit.Tests")]
+[assembly: AssemblyProduct("Utils.DecayableCache.Protocol.Unit.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
