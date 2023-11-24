@@ -1,4 +1,4 @@
-# Skyline.DataMiner.Utils.TableDataCache.Protocol
+# Skyline.DataMiner.Utils.DecayableCache.Protocol
 
 ## About
 
@@ -6,7 +6,7 @@
 
 ## Projects
 
-* For more information about Skyline.DataMiner.Utils.TableDataCache.Protocol, see [Utils.TableDataCache.Protocol/README.md](Utils.TableDataCache.Protocol/README.md).
+* For more information about Skyline.DataMiner.Utils.DecayableCache.Protocol, see [Utils.DecayableCache.Protocol/README.md](Utils.DecayableCache.Protocol/README.md).
 
 ### About DataMiner
 

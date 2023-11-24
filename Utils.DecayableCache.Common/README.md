@@ -1,6 +1,8 @@
-# Skyline.DataMiner.Utils.TableDataCache.Protocol
+# Skyline.DataMiner.Utils.DecayableCache.Common
 
 ## About
+
+
 
 ### About DataMiner
 
@@ -17,19 +19,5 @@ A unique catalog of 7000+ connectors already exist. In addition, you can leverag
 
 At Skyline Communications, we deal in world-class solutions that are deployed by leading companies around the globe. Check out [our proven track record](https://aka.dataminer.services/about-skyline) and see how we make our customers' lives easier by empowering them to take their operations to the next level.
 
-## Overview
-This library offers a robust solution for efficiently caching table data in memory. Designed specifically for .NET applications, it ensures thread-safe operations, allowing for concurrent data access without compromising data integrity or performance.
-
-## Key Features
-- **In-Memory Caching:** Optimizes memory usage while providing fast access to table data.
-- **Thread Safety:** Implements synchronization mechanisms to ensure safe access in multi-threaded environments.
-- **Easy Integration:** Seamlessly integrates with existing .NET projects, offering a straightforward API for developers.
-
-## Ideal Use Cases
-- Connectors requiring frequent read access to tables, especially when using multi-threaded timers.
-- Connectors where the tables are large and lookups need to be done frequently.
-- Environments with concurrent data access needs.
-
-## Getting Started
-
--- TODO --
+<!-- Uncomment below and add more info to provide more information about how to use this package. -->
+<!-- ## Getting Started -->
