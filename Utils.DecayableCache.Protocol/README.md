@@ -49,6 +49,8 @@ lock (parameter.Lock)
 		parameter.Value = new Dictionary<PhysicalAddress, string>();
 
 		// Load existing values
+
+		parameter.IsInitialized = true;
 	}
 
 	// Read cached values
