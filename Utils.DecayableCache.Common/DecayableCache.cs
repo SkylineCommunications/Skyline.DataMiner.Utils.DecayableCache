@@ -19,6 +19,8 @@ namespace Utils.DecayableCache.Common
 
 		private readonly bool _forceGc;
 
+		private volatile bool _isBusyPruning;
+
 		/// <summary>
 		/// Initializes the cache where stale data is deleted automatically if it has not been fetched for more than <paramref name="staleDataLifeTime"/> time.
 		/// The minimum life time is 250 milliseconds.
@@ -62,21 +64,43 @@ namespace Utils.DecayableCache.Common
 
 		private void StaleDataTimerCallback(object state)
 		{
-			bool hasRemovedAny = false;
-			var staleDateTime = DateTime.UtcNow.Subtract(_staleDataLifeTime);
-
-			foreach (var element in _temporaryValues)
+			try
 			{
-
-				if (element.Value.LastActivityUtc < staleDateTime)
+				// In case the collection or GC.Collect are taking a long time, we abort a second simultaneous callback. 
+				if (_isBusyPruning)
 				{
-					hasRemovedAny |= _temporaryValues.TryRemove(element.Key, out _);
+					return;
+				}
+				
+				// The flag is marked volatile and thus, atomic. We only expect a timer callback every >250ms, so no further synchronization is necessary.
+				// Executing this function concurrently is still thread-safe, but we don't want to waste the threadpool on it.
+				_isBusyPruning = true;
+
+				bool hasRemovedAny = false;
+				var staleDateTime = DateTime.UtcNow.Subtract(_staleDataLifeTime);
+
+				foreach (var element in _temporaryValues)
+				{
+
+					if (element.Value.LastActivityUtc < staleDateTime)
+					{
+						hasRemovedAny |= _temporaryValues.TryRemove(element.Key, out _);
+					}
+				}
+
+				if (_forceGc && hasRemovedAny)
+				{
+					GC.Collect();
 				}
 			}
-
-			if (_forceGc && hasRemovedAny)
+			catch(Exception e)
 			{
-				GC.Collect();
+				// Throwing exceptions in the timer callback will not get logged and may cause process or thread termination.
+				Console.WriteLine("DecayableCache StaleDataTimerCallback encountered a problem: " + e);
+			}
+			finally
+			{
+				_isBusyPruning = false;
 			}
 		}
 
