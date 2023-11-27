@@ -22,11 +22,12 @@ This library offers a robust solution for efficiently caching parameter data in 
 
 ## Ideal Use Cases
 - Connectors where the parameters or tables are large and lookups need to be done frequently.
+- Connectors where a static container is needed, but data should be removed for inactive elements.
 - Environments with concurrent data access needs.
 
 ## Getting Started
 
-Define a static object of the **GlobalparameterCache** class using your desired data type.
+Define a static object of the **GlobalParameterCache** class using your desired data type.
 
 - Tables could be a Dictionary holding the PK to some or all row values.
 - Large parameters could contain the deserialized data type rather than the serialized string.
