@@ -19,17 +19,17 @@ namespace Utils.DecayableCache.Protocol.Unit.Tests
 
 			Thread.Sleep(200);
 
-			Assert.IsTrue(cache.GetParameter(1, 1, 1).IsInitialized);
+			Assert.That(cache.GetParameter(1, 1, 1).IsInitialized, Is.True);
 
 			Thread.Sleep(200);
 
-			Assert.IsTrue(cache.GetParameter(1, 1, 1).IsInitialized);
+			Assert.That(cache.GetParameter(1, 1, 1).IsInitialized, Is.True);
 
 			// Wait long enough so 3 timer cycles have passed and our value is definitely deleted.
 			// Trying to get the data too early would just extend its lifetime.
 			Thread.Sleep(400);
 
-			Assert.IsFalse(cache.GetParameter(1, 1, 1).IsInitialized);
+			Assert.That(cache.GetParameter(1, 1, 1).IsInitialized, Is.False);
 		}
 
 		[Test]
@@ -42,10 +42,10 @@ namespace Utils.DecayableCache.Protocol.Unit.Tests
 			cache.GetParameter(1, 2, 1).Value = 121;
 			cache.GetParameter(2, 1, 1).Value = 211;
 
-			Assert.AreEqual(111, cache.GetParameter(1, 1, 1).Value);
-			Assert.AreEqual(112, cache.GetParameter(1, 1, 2).Value);
-			Assert.AreEqual(121, cache.GetParameter(1, 2, 1).Value);
-			Assert.AreEqual(211, cache.GetParameter(2, 1, 1).Value);
+			Assert.That(cache.GetParameter(1, 1, 1).Value, Is.EqualTo(111));
+			Assert.That(cache.GetParameter(1, 1, 2).Value, Is.EqualTo(112));
+			Assert.That(cache.GetParameter(1, 2, 1).Value, Is.EqualTo(121));
+			Assert.That(cache.GetParameter(2, 1, 1).Value, Is.EqualTo(211));
 		}
 	}
 }

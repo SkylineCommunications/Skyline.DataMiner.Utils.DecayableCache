@@ -72,7 +72,7 @@ namespace Utils.DecayableCache.Common
 					return;
 				}
 				
-				// The flag is marked volatile and thus, atomic. We only expect a timer callback every >250ms, so no further synchronization is necessary.
+				// The flag is marked volatile and thus, atomic. We only expect a timer callback every >100ms, so no further synchronization is necessary.
 				// Executing this function concurrently is still thread-safe, but we don't want to waste the threadpool on it.
 				_isBusyPruning = true;
 
