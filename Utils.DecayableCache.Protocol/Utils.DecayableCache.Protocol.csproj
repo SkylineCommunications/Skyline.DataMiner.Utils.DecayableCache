@@ -6,6 +6,7 @@
 		<AssemblyName>Skyline.DataMiner.Utils.DecayableCache.Protocol</AssemblyName>
 		<PackageVersion>0.0.1</PackageVersion>
 		<Version>0.0.1</Version>
+		<packageId>Skyline.DataMiner.Utils.DecayableCache.Protocol</packageId>
 		<PackageTags>Skyline;DataMiner</PackageTags>
 		<PackageProjectUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.DecayableCache</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
