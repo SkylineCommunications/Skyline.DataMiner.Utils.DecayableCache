@@ -4,10 +4,10 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<AssemblyName>Skyline.DataMiner.Utils.TableDataCache.Common</AssemblyName>
-		<PackageVersion>1.0.1</PackageVersion>
-		<Version>1.0.1</Version>
+		<PackageVersion>0.0.1</PackageVersion>
+		<Version>0.0.1</Version>
 		<PackageTags>Skyline;DataMiner</PackageTags>
-		<PackageProjectUrl>https://skyline.be</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.DecayableCache</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -16,7 +16,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>SkylineCommunications</Authors>
 		<Company>Skyline Communications</Company>
-		<Description></Description>
+		<Description>A NuGet library for efficient, thread-safe, and temporary caching of generic data in memory.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>

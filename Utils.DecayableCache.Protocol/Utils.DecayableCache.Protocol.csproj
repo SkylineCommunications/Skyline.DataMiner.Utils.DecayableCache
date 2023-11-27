@@ -5,7 +5,7 @@
 		<Nullable>disable</Nullable>
 		<AssemblyName>Skyline.DataMiner.Utils.DecayableCache.Protocol</AssemblyName>
 		<PackageVersion>0.0.1</PackageVersion>
-		<Version>1.0.1</Version>
+		<Version>0.0.1</Version>
 		<PackageTags>Skyline;DataMiner</PackageTags>
 		<PackageProjectUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.DecayableCache</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
